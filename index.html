@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO & Coding Hub</title>
+    <style>
+      /* Reset some default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #02343F;
+        background-color: #F0EDCC;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        /* Add a subtle font smoothing for better text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Optional: enhance body responsiveness and readability */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+      /* Navigation Styles */
+      /* Sticky navigation with subtle shadow for depth */
+      nav {
+        position: sticky;
+        top: 0;
+        background-color: #02343F;
+        padding: 1rem 2rem;
+        z-index: 999;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      /* Flex container for menu items, with smooth wrapping and alignment */
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      /* Spacing between menu items, with a hover effect for better spacing on smaller screens */
+      nav li {
+        margin: 0 1.5rem;
+        transition: transform 0.2s;
+      }
+      nav li:hover {
+        transform: translateY(-2px);
+      }
+      /* Style for links with improved accessibility and visual feedback */
+      nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.75rem 1.2rem;
+        border-radius: 6px;
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        display: inline-block;
+      }
+      /* Hover effect with subtle background change and shadow for better interactiveness */
+      nav a:hover,
+      nav a:focus {
+        background-color: #F0EDCC;
+        color: #02343F;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+      /* Optional: Responsive adjustments for smaller screens */
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.75rem 1rem;
+        }
+        nav ul {
+          flex-direction: column;
+        }
+        nav li {
+          margin: 0.5rem 0;
+        }
+        nav a {
+          padding: 0.75rem 1rem;
+        }
+      }
+      /* Hero Section */
+      /* Hero section with vibrant background and smooth typography */
+      .hero {
+        background-color: #F0EDCC;
+        /* Warm, inviting background */
+        color: #02343F;
+        /* Dark text for readability */
+        padding: 4rem 2rem;
+        /* Generous padding for spacious layout */
+        text-align: center;
+        /* Centered content */
+        position: relative;
+        /* For potential overlays or decorative elements */
+        overflow: hidden;
+        /* Prevents overflow from child elements if animated */
+        transition: background-color 0.3s ease, padding 0.3s ease;
+      }
+      /* Heading styles with enhanced font size, weight, and spacing for emphasis */
+      .hero h1 {
+        font-size: 3rem;
+        /* Slightly larger for more impact */
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        /* Bold for prominence */
+        line-height: 1.2;
+        letter-spacing: 1px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* Paragraph styles with improved readability and spacing */
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 400;
+      }
+      /* Optional: Add subtle background gradient or overlay for depth */
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Example gradient overlay for visual interest (adjust colors as needed) */
+        background: linear-gradient(rgba(240, 237, 204, 0.2), rgba(240, 237, 204, 0.2));
+        pointer-events: none;
+        /* Allows clicks to pass through */
+        z-index: 0;
+      }
+      /* Ensure text content stays above overlays */
+      .hero>* {
+        position: relative;
+        z-index: 1;
+      }
+      /* Responsive typography adjustments */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .hero {
+          padding: 3rem 1.5rem;
+        }
+      }
+      /* Section Styles */
+      /* Container section with padding and centered max-width for a clean layout */
+      section {
+        padding: 2rem 1.5rem;
+        /* Slightly increased padding for better spacing */
+        max-width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        background-color: #F0EDCC;
+        /* Optional: background for contrast */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        /* Subtle shadow for depth */
+        border-radius: 8px;
+        /* Rounded corners for a softer look */
+        transition: box-shadow 0.3s ease, padding 0.3s ease;
+      }
+      /* Section heading with centered text and enhanced style */
+      section h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 2.5rem;
+        color: #02343F;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 1rem;
+      }
+      /* SEO Tools Grid with responsive layout and smooth gaps */
+      /* Grid container with improved spacing and visual balance */
+      .seo-tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        /* Spacious gaps for clarity */
+        padding: 1rem 0;
+        align-items: stretch;
+        /* Ensures all items have equal height */
+        transition: all 0.3s ease;
+        /* Smooth transition for container changes */
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Center the grid container if needed */
+      }
+      /* Style for individual grid items with subtle aesthetics */
+      .seo-tools div {
+        background-color: #ffffff;
+        /* Clean, neutral background for contrast */
+        border-radius: 12px;
+        /* Slightly larger radius for a softer look */
+        padding: 1.75rem;
+        /* Slightly increased padding for spaciousness */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        /* Softer, more modern shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        cursor: pointer;
+        /* Indicate interactivity */
+      }
+      /* Hover and focus effects for interactivity and feedback */
+      .seo-tools div:hover,
+      .seo-tools div:focus {
+        transform: translateY(-6px);
+        /* Slight lift on hover */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        /* Elevated shadow for depth */
+        background-color: #f0f0f0;
+        /* Slight background change for feedback */
+      }
+      /* Optional: Add a subtle border or outline for accessibility */
+      .seo-tools div:focus {
+        outline: 2px dashed #02343F;
+        outline-offset: 4px;
+      }
+      /* Responsive typography adjustments for smaller screens */
+      @media (max-width: 768px) {
+        /* Optional: reduce gap or padding for smaller screens */
+        .seo-tools {
+          gap: 2rem;
+        }
+      }
+      .seo-tools {
+        gap: 2rem;
+      }
+      .tool-card {
+        background-color: #F0EDCC;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .tool-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      .tool-desc {
+        font-size: 0.95rem;
+        text-align: center;
+        color: #02343F;
+        margin-bottom: 1rem;
+      }
+      /* Buttons inside tool cards: use consistent class */
+      /* Modern, stylish button with smooth transitions and subtle effects */
+      .custom-button {
+        background-color: #02343F;
+        /* Deep primary color */
+        color: #F0EDCC;
+        /* Light text color for contrast */
+        padding: 0.75rem 1.25rem;
+        /* Slightly increased padding for better clickability */
+        border: none;
+        border-radius: 6px;
+        /* Rounded corners for softer appearance */
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        /* Slightly bolder text for emphasis */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Subtle depth */
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, filter 0.2s;
+        outline: none;
+        /* Remove default outline for custom focus style */
+      }
+      /* Hover state with color change and slight lift */
+      .custom-button:hover {
+        background-color: #0250a3;
+        /* Slightly lighter/darker on hover */
+        transform: translateY(-2px);
+        /* Slight lift effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        /* Enhanced shadow for depth */
+      }
+      /* Focus state for accessibility */
+      .custom-button:focus {
+        outline: 3px dashed #F0EDCC;
+        /* Visible focus outline matching text color for contrast */
+        outline-offset: 4px;
+        box-shadow: 0 0 0 3px rgba(2, 80, 163, 0.4);
+        /* Focus ring with subtle glow */
+      }
+      /* Active/pressed state for tactile feedback */
+      .custom-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        filter: brightness(0.95);
+      }
+      /* Optional: Add a subtle disabled style */
+      .custom-button:disabled {
+        background-color: #a0a0a0;
+        cursor: not-allowed;
+        opacity: 0.6;
+        box-shadow: none;
+        transform: none;
+      }
+      /* Carousel Styles */
+      /* Container with subtle padding and hidden overflow for masking carousel items */
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+        background-color: #f9f9f9;
+        /* Optional: Light background for contrast */
+        border-radius: 12px;
+        /* Rounded edges for a more polished look */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        /* Soft shadow for depth */
+      }
+      /* Carousel track with smooth sliding transition */
+      .carousel {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Smooth easing */
+        will-change: transform;
+        /* Performance optimization */
+      }
+      /* Carousel items with consistent size, styling, and hover effects */
+      .carousel-item {
+        min-width: 300px;
+        max-width: 300px;
+        flex: none;
+        background-color: #02343F;
+        border-radius: 10px;
+        /* Slightly larger radius for softer corners */
+        margin: 0 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        /* Enhanced depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        /* Indicate interactivity if needed */
+        position: relative;
+        /* For potential overlays or effects */
+      }
+      /* Hover effect: slight scaling for emphasis with smooth transition */
+      .carousel-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background-color: #02475B;
+        /* Slightly lighter shade for feedback */
+      }
+      /* Responsive adjustments for smaller screens to ensure seamless experience */
+      @media (max-width: 768px) {
+        .carousel-item {
+          min-width: 80%;
+          /* Make items more flexible on small screens */
+          max-width: 80%;
+          margin: 0 0.5rem;
+        }
+      }
+      /* Navigation buttons container, positioned vertically centered */
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 1.5rem;
+        pointer-events: none;
+        /* Allow clicks only on buttons, not container */
+        z-index: 10;
+        /* Ensure buttons stay above carousel */
+      }
+      /* Style for navigation buttons (previous/next) */
+      .carousel-nav button {
+        background-color: rgba(2, 52, 63, 0.8);
+        /* Semi-transparent background */
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2rem;
+        transition: background-color 0.3s, transform 0.2s;
+        pointer-events: auto;
+        /* Enable clicks on buttons */
+      }
+      .carousel-nav button:hover {
+        background-color: rgba(2, 52, 63, 1);
+        transform: scale(1.1);
+      }
+      /* Optional: Add focus styles for accessibility */
+      .carousel-nav button:focus {
+        outline: 3px dashed #F0EDCC;
+        outline-offset: 4px;
+      }
+      .nav-btn {
+        background-color: rgba(34, 34, 34, 0.5);
+        border: none;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        transition: background-color 0.3s;
+      }
+      .nav-btn:hover {
+        background-color: rgba(34, 34, 34, 0.8);
+      }
+      /* Footer Styles */
+      /* Footer styling with a refined background and padding */
+      footer {
+        background-color: #02343F;
+        color: #F0EDCC;
+        padding: 2rem 1.5rem;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      /* Container for footer sections with flexible layout */
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      /* Each footer section with responsive flexibility */
+      .footer-section {
+        flex: 1 1 200px;
+        margin: 1rem;
+        min-width: 200px;
+      }
+      /* Heading styles with spacing and font emphasis */
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-bottom: 2px solid #F0EDCC;
+        padding-bottom: 0.5rem;
+      }
+      /* Remove default list styles for links and icons */
+      .footer-links,
+      .social-icons {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      /* List items with spacing for clarity */
+      .footer-links li,
+      .social-icons li {
+        margin-bottom: 0.75rem;
+      }
+      /* Link styles with smooth hover transition and interaction feedback */
+      .footer-links a,
+      .social-icons a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s, transform 0.2s;
+        display: inline-block;
+        font-size: 1rem;
+      }
+      /* Hover effects for links to enhance interactivity */
+      .footer-links a:hover,
+      .social-icons a:hover {
+        color: #F0EDCC;
+        transform: translateY(-2px);
+      }
+      /* Social icons with larger clickable area and hover effects */
+      .social-icons a {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+      .social-icons a:hover {
+        background-color: rgba(240, 237, 204, 0.2);
+        transform: scale(1.1);
+      }
+      /* Responsive adjustments for smaller screens */
+      @media(max-width: 768px) {
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem;
+        }
+        .footer-section {
+          flex: 1 1 100%;
+          margin: 1rem 0;
+          text-align: center;
+        }
+        /* Optional: center footer headings on small screens for better layout */
+        .footer-section h3 {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#seo-tools">SEO Tools</a></li>
+        <li><a href="#resource-tools">Resource</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="hero" id="hero">
+      <h1>Hello There</h1>
+      <p>Your go-to resource for SEO tools and coding learning videos. Stay tuned—more valuable content will be added regularly.</p>
+    </section>
+
+    <!-- SEO Tools Section -->
+    <section id="seo-tools">
+      <h2>SEO Tools</h2>
+      <div class="seo-tools">
+
+        <!-- Example Tool Cards -->
+        <div class="tool-card">
+          <div class="tool-title">URL Path separator</div>
+          <div class="tool-desc">
+            It's a handy tool that simplifies splitting and managing URL paths by accurately identifying and separating each segment, making navigation more efficient.
+          </div>
+          <a href="https://hal9000dev-ai.github.io/url-path-separator/" class="custom-button" id="splitUrlButton">
+            Split URL Path
+          </a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-title">Multi Format Link Converter</div>
+          <div class="tool-desc">Easily convert all types of links, including BBCode, HTML, and plain URLs.</div>
+          <a href="https://hal9000dev-ai.github.io/rich-text-to-multi-format-link-converter/" class="custom-button" id="multiFormatButton">
+            Convert Links
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resource Tools Section -->
+    <section id="resource-tools">
+      <h2>Resource</h2>
+      <div class="seo-tools">
+
+        <!-- Example Resource Card -->
+        <div class="tool-card">
+          <div class="tool-desc">Discover a comprehensive collection of coding tutorials, videos, and resources from Youtube. Your go-to site for all things coding—learn, explore, and master programming today!</div>
+          <a href="https://hal9000dev-ai.github.io/all-about-coding/" class="custom-button" id="multiFormatButton">
+            Watch Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: shakeeb.sa.ahmed@gmail.com</p>
+          <p>Github: https://github.com/shakeeb-sa/</p>
+          <p>LinkedIn: https://pk.linkedin.com/in/shakeeb-ahmed-034093370</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:1rem;">Created by Shakeeb Ahmed</p>
+    </footer>
+  </body>
+</html>
